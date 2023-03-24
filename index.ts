@@ -23,8 +23,7 @@ const regions = [
 
 async function publishLayer() {
   // Read the contents of the layer ZIP file
-  const layerZipFilePath = resolve(__dirname, "layer.zip");
-  const layerZipFile = await fs.readFile(layerZipFilePath);
+  const layerZipFile = await fs.readFile("./layer.zip");
 
   // Publish the layer to each region in parallel
   const publishPromises = regions.map((region) => {

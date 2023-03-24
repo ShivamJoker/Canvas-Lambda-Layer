@@ -1,3 +1,4 @@
+import { createRequire } from 'module';const require = createRequire(import.meta.url);
 var __create = Object.create;
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -173,11 +174,11 @@ function __metadata(metadataKey, metadataValue) {
 }
 function __awaiter(thisArg, _arguments, P, generator) {
   function adopt(value) {
-    return value instanceof P ? value : new P(function(resolve2) {
-      resolve2(value);
+    return value instanceof P ? value : new P(function(resolve) {
+      resolve(value);
     });
   }
-  return new (P || (P = Promise))(function(resolve2, reject) {
+  return new (P || (P = Promise))(function(resolve, reject) {
     function fulfilled(value) {
       try {
         step(generator.next(value));
@@ -193,7 +194,7 @@ function __awaiter(thisArg, _arguments, P, generator) {
       }
     }
     function step(result) {
-      result.done ? resolve2(result.value) : adopt(result.value).then(fulfilled, rejected);
+      result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
     }
     step((generator = generator.apply(thisArg, _arguments || [])).next());
   });
@@ -399,14 +400,14 @@ function __asyncValues(o) {
   }, i);
   function verb(n) {
     i[n] = o[n] && function(v) {
-      return new Promise(function(resolve2, reject) {
-        v = o[n](v), settle(resolve2, reject, v.done, v.value);
+      return new Promise(function(resolve, reject) {
+        v = o[n](v), settle(resolve, reject, v.done, v.value);
       });
     };
   }
-  function settle(resolve2, reject, d, v) {
+  function settle(resolve, reject, d, v) {
     Promise.resolve(v).then(function(v2) {
-      resolve2({ value: v2, done: d });
+      resolve({ value: v2, done: d });
     }, reject);
   }
 }
@@ -14424,7 +14425,7 @@ var require_DefaultRateLimiter = __commonJS({
         this.refillTokenBucket();
         if (amount > this.currentCapacity) {
           const delay = (amount - this.currentCapacity) / this.fillRate * 1e3;
-          await new Promise((resolve2) => setTimeout(resolve2, delay));
+          await new Promise((resolve) => setTimeout(resolve, delay));
         }
         this.currentCapacity = this.currentCapacity - amount;
       }
@@ -15190,7 +15191,7 @@ var require_StandardRetryStrategy2 = __commonJS({
               const delayFromResponse = getDelayFromRetryAfterHeader(err.$response);
               const delay = Math.max(delayFromResponse || 0, delayFromDecider);
               totalDelay += delay;
-              await new Promise((resolve2) => setTimeout(resolve2, delay));
+              await new Promise((resolve) => setTimeout(resolve, delay));
               continue;
             }
             if (!err.$metadata) {
@@ -15396,7 +15397,7 @@ var require_retryMiddleware = __commonJS({
             attempts = retryToken.getRetryCount();
             const delay = retryToken.getRetryDelay();
             totalRetryDelay += delay;
-            await new Promise((resolve2) => setTimeout(resolve2, delay));
+            await new Promise((resolve) => setTimeout(resolve, delay));
           }
         }
       } else {
@@ -21935,7 +21936,7 @@ var require_httpRequest2 = __commonJS({
     var buffer_1 = __require("buffer");
     var http_1 = __require("http");
     function httpRequest(options) {
-      return new Promise((resolve2, reject) => {
+      return new Promise((resolve, reject) => {
         var _a;
         const req = (0, http_1.request)({
           method: "GET",
@@ -21961,7 +21962,7 @@ var require_httpRequest2 = __commonJS({
             chunks.push(chunk);
           });
           res.on("end", () => {
-            resolve2(buffer_1.Buffer.concat(chunks));
+            resolve(buffer_1.Buffer.concat(chunks));
             req.destroy();
           });
         });
@@ -23652,13 +23653,13 @@ var require_node_http_handler = __commonJS({
     var NodeHttpHandler = class {
       constructor(options) {
         this.metadata = { handlerProtocol: "http/1.1" };
-        this.configProvider = new Promise((resolve2, reject) => {
+        this.configProvider = new Promise((resolve, reject) => {
           if (typeof options === "function") {
             options().then((_options) => {
-              resolve2(this.resolveDefaultConfig(_options));
+              resolve(this.resolveDefaultConfig(_options));
             }).catch(reject);
           } else {
-            resolve2(this.resolveDefaultConfig(options));
+            resolve(this.resolveDefaultConfig(options));
           }
         });
       }
@@ -23684,7 +23685,7 @@ var require_node_http_handler = __commonJS({
         if (!this.config) {
           this.config = await this.configProvider;
         }
-        return new Promise((resolve2, reject) => {
+        return new Promise((resolve, reject) => {
           var _a, _b;
           if (!this.config) {
             throw new Error("Node HTTP request handler config is not resolved");
@@ -23712,7 +23713,7 @@ var require_node_http_handler = __commonJS({
               headers: (0, get_transformed_headers_1.getTransformedHeaders)(res.headers),
               body: res
             });
-            resolve2({ response: httpResponse });
+            resolve({ response: httpResponse });
           });
           req.on("error", (err) => {
             if (constants_1.NODEJS_TIMEOUT_ERROR_CODES.includes(err.code)) {
@@ -23895,13 +23896,13 @@ var require_node_http2_handler = __commonJS({
       constructor(options) {
         this.metadata = { handlerProtocol: "h2" };
         this.connectionManager = new node_http2_connection_manager_1.NodeHttp2ConnectionManager({});
-        this.configProvider = new Promise((resolve2, reject) => {
+        this.configProvider = new Promise((resolve, reject) => {
           if (typeof options === "function") {
             options().then((opts) => {
-              resolve2(opts || {});
+              resolve(opts || {});
             }).catch(reject);
           } else {
-            resolve2(options || {});
+            resolve(options || {});
           }
         });
       }
@@ -23917,7 +23918,7 @@ var require_node_http2_handler = __commonJS({
           }
         }
         const { requestTimeout, disableConcurrentStreams } = this.config;
-        return new Promise((resolve2, rejectOriginal) => {
+        return new Promise((resolve, rejectOriginal) => {
           var _a;
           let fulfilled = false;
           if (abortSignal === null || abortSignal === void 0 ? void 0 : abortSignal.aborted) {
@@ -23955,7 +23956,7 @@ var require_node_http2_handler = __commonJS({
               body: req
             });
             fulfilled = true;
-            resolve2({ response: httpResponse });
+            resolve({ response: httpResponse });
             if (disableConcurrentStreams) {
               session.close();
               this.connectionManager.deleteSession(authority, session);
@@ -24034,7 +24035,7 @@ var require_stream_collector = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.streamCollector = void 0;
     var collector_1 = require_collector();
-    var streamCollector = (stream) => new Promise((resolve2, reject) => {
+    var streamCollector = (stream) => new Promise((resolve, reject) => {
       const collector = new collector_1.Collector();
       stream.pipe(collector);
       stream.on("error", (err) => {
@@ -24044,7 +24045,7 @@ var require_stream_collector = __commonJS({
       collector.on("error", reject);
       collector.on("finish", function() {
         const bytes = new Uint8Array(Buffer.concat(this.bufferedBytes));
-        resolve2(bytes);
+        resolve(bytes);
       });
     });
     exports.streamCollector = streamCollector;
@@ -28499,7 +28500,7 @@ var require_sleep = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.sleep = void 0;
     var sleep = (seconds) => {
-      return new Promise((resolve2) => setTimeout(resolve2, seconds * 1e3));
+      return new Promise((resolve) => setTimeout(resolve, seconds * 1e3));
     };
     exports.sleep = sleep;
   }
@@ -28635,8 +28636,8 @@ var require_createWaiter = __commonJS({
     var utils_1 = require_utils2();
     var waiter_1 = require_waiter2();
     var abortTimeout = async (abortSignal) => {
-      return new Promise((resolve2) => {
-        abortSignal.onabort = () => resolve2({ state: waiter_1.WaiterState.ABORTED });
+      return new Promise((resolve) => {
+        abortSignal.onabort = () => resolve({ state: waiter_1.WaiterState.ABORTED });
       });
     };
     var createWaiter = async (options, input, acceptorChecks) => {
@@ -29038,7 +29039,6 @@ var require_dist_cjs51 = __commonJS({
 // index.ts
 var import_client_lambda = __toESM(require_dist_cjs51());
 import fs from "fs/promises";
-import { resolve } from "path";
 var LAYER_NAME = "napi-rs-canvas";
 var LAYER_DESCRIPTION = "Lambda layer for @napi-rs/canvas";
 var COMPATIBLE_RUNTIMES = ["nodejs14.x", "nodejs16.x", "nodejs18.x"];
@@ -29053,8 +29053,7 @@ var regions = [
   "sa-east-1"
 ];
 async function publishLayer() {
-  const layerZipFilePath = resolve(__dirname, "layer.zip");
-  const layerZipFile = await fs.readFile(layerZipFilePath);
+  const layerZipFile = await fs.readFile("./layer.zip");
   const publishPromises = regions.map((region) => {
     const lambda = new import_client_lambda.Lambda({ region });
     return lambda.publishLayerVersion({
