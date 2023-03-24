@@ -29,7 +29,7 @@ jobs:
         run: |
           for region in $(echo $AWS_REGIONS | tr ',' ' '); do
             echo "Publishing Lambda layer to region $region..."
-            result=$(aws lambda publish-layer-version --region $region --layer-name $LAYER_NAME --description "Lambda layer for @napi-rs/canvas" --compatible-runtimes $COMPATIBLE_RUNTIMES --zip-file "fileb://layer.zip" --query "LayerVersionArn,Version" --output json)
+            result=$(aws lambda publish-layer-version --region $region --layer-name $LAYER_NAME --description "Lambda layer for @napi-rs/canvas" --compatible-runtimes $COMPATIBLE_RUNTIMES --zip-file "fileb://layer.zip" --query --query "{LayerVersionArn: LayerVersionArn, Version: Version}" --output json)
             ARN=$(echo $result | jq -r '.LayerVersionArn')
             VERSION=$(echo $result | jq -r '.Version')
             echo "Published version $VERSION of Lambda layer to region $region with ARN $ARN"
