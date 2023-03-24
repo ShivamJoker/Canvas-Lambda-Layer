@@ -33,12 +33,13 @@ jobs:
 
       - name: Set Up Git User
         run: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
           git config --system --add safe.directory /__w/Canvas-Lambda-Layer/*
 
       - name: Commit and Push Changes
         run: |
+          pwd
+          git config user.name github-actions
+          git config user.email github-actions@github.com
           git add README.md
           git commit -m "Update layer version on README"
           git push origin HEAD
