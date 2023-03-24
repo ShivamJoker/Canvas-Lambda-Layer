@@ -33,7 +33,7 @@ jobs:
             ARN=$(echo $result | jq -r '.LayerVersionArn')
             VERSION=$(echo $result | jq -r '.Version')
             echo "Published version $VERSION of Lambda layer to region $region with ARN $ARN"
-            aws lambda add-layer-version-permission --region $region --layer-name $LAYER_NAME --version-number $VERSION --statement-id "public-access" --action lambda:GetLayerVersion --principal "*" --organization-id "all"
+            aws lambda add-layer-version-permission --region $region --layer-name $LAYER_NAME --version-number $VERSION --statement-id "public-access" --action lambda:GetLayerVersion --principal "*"
           done
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
