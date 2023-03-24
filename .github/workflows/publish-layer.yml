@@ -13,7 +13,7 @@ jobs:
       image: amazonlinux:latest
     steps:
       - name: Install node,jq.zip, cli
-        run: yum -y install tar nodejs jq zip awscli
+        run: yum -y install tar gzip git nodejs jq zip awscli
 
       - name: Checkout repository
         uses: actions/checkout@v2
