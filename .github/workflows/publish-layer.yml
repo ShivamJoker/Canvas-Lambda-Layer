@@ -13,7 +13,7 @@ jobs:
       image: amazonlinux:latest
     steps:
       - name: Install node,jq.zip, cli
-        run: yum -y install tar gzip git nodejs jq zip awscli
+        run: yum -y install tar gzip git nodejs zip 
 
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -32,8 +32,8 @@ jobs:
           node index.mjs
       - name: Set Up Git User
         run: |
-          git config --global user.name "Octobot"
-          git config --global user.email "bot@github.com"
+          git config --global user.name "ShivamJoker"
+          git config --global user.email "hi@creativeshi.com"
 
       - name: Commit and Push Changes
         run: |
