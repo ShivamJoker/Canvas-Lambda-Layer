@@ -12,11 +12,12 @@ jobs:
     container:
       image: amazonlinux:latest
     steps:
+      - name: Install node,jq.zip, cli
+        run: yum -y install tar nodejs jq zip awscli
+
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Install node,jq.zip, cli
-        run: yum -y install nodejs jq zip awscli
       - name: Build Lambda Layer
         run: |
           mkdir nodejs
