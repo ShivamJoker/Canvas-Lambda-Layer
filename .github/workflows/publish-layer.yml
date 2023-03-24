@@ -1,6 +1,7 @@
 name: Build and Publish Lambda Layer
 
 on:
+  push:
   schedule:
     # Run every week on Sunday at midnight
     - cron: '0 0 * * 0'
@@ -11,7 +12,10 @@ jobs:
     container:
       image: amazonlinux:latest
     steps:
-      - name: Install jq
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install node,jq.zip, cli
         run: yum -y install nodejs jq zip awscli
       - name: Build Lambda Layer
         run: |
