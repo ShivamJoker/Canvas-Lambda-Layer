@@ -1,0 +1,46 @@
+name: Build and Publish Lambda Layer
+
+on:
+  schedule:
+    # Run every week on Sunday at midnight
+    - cron: '0 0 * * 0'
+
+jobs:
+  build-and-publish:
+    runs-on: amazonlinux:2
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18.x'
+      - name: Install dependencies
+        run: npm install
+#       - name: Install jq
+#         run: sudo yum -y install jq
+      - name: Build Lambda Layer
+        run: |
+          mkdir nodejs
+          cd nodejs
+          npm i @napi-rs/canvas
+          cd ../
+          zip -r layer.zip nodejs
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      - name: Publish Lambda Layer
+        id: publish-layer
+        run: |
+          for region in ${{ env.REGIONS }}; do
+            RESULT=$(aws lambda publish-layer-version --region $region --layer-name 'napi-rs-canvas' --description 'Lambda layer for @napi-rs/canvas' --compatible-runtimes '${{ env.COMPATIBLE_RUNTIMES }}' --zip-file 'fileb://layer.zip' --query 'LayerVersionArn,Version' --output json)
+            ARN=$(echo $RESULT | jq -r '.LayerVersionArn')
+            VERSION=$(echo $RESULT | jq -r '.Version')
+            echo "Published version $VERSION of Lambda layer to region $region with ARN $ARN"
+            aws lambda add-layer-version-permission --region $region --layer-name 'napi-rs-canvas' --version-number $VERSION --statement-id 'public-access' --action lambda:GetLayerVersion --principal '*' --organization-id 'all'
+          done
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          COMPATIBLE_RUNTIMES: 'nodejs14.x,nodejs16.x,nodejs18.x'
+          REGIONS: 'us-east-1 us-west-2 eu-west-1 ap-northeast-1 ap-southeast-1 ap-southeast-2 eu-central-1 sa-east-1'
