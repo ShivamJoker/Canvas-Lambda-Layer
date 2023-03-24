@@ -16,7 +16,7 @@ jobs:
         run: yum -y install tar gzip git nodejs zip 
 
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Build Lambda Layer
         run: |
