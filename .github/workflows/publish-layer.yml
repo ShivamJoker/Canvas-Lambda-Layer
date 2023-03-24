@@ -43,5 +43,3 @@ jobs:
           git add README.md
           git commit -m "Update layer version on README"
           git push origin HEAD
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
