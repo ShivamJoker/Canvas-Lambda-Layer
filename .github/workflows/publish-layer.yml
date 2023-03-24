@@ -12,7 +12,7 @@ jobs:
     container:
       image: amazonlinux:latest
     steps:
-      - name: Install node,jq.zip, cli
+      - name: Install node, zip, cli
         run: yum -y install tar gzip git nodejs zip 
 
       - name: Checkout repository
@@ -32,8 +32,8 @@ jobs:
           node index.mjs
       - name: Set Up Git User
         run: |
-          git config --global user.name "ShivamJoker"
-          git config --global user.email "hi@creativeshi.com"
+          # git config --global user.name "ShivamJoker"
+          # git config --global user.email "hi@creativeshi.com"
 
       - name: Commit and Push Changes
         run: |
