@@ -32,8 +32,9 @@ jobs:
           node index.mjs
       - name: Set Up Git User
         run: |
-          # git config --global user.name "ShivamJoker"
-          # git config --global user.email "hi@creativeshi.com"
+          git config --global user.name "ShivamJoker"
+          git config --global user.email "hi@creativeshi.com"
+          git config --system --add safe.directory *
 
       - name: Commit and Push Changes
         run: |
