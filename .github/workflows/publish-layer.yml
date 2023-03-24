@@ -12,7 +12,7 @@ jobs:
       image: amazonlinux:latest
     steps:
       - name: Install jq
-        run: yum -y install nodejs jq
+        run: yum -y install nodejs jq zip awscli
       - name: Build Lambda Layer
         run: |
           mkdir nodejs
