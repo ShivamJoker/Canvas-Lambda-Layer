@@ -11,8 +11,8 @@ jobs:
     container:
       image: amazonlinux:latest
     steps:
-#       - name: Install jq
-#         run: sudo yum -y install jq
+      - name: Install jq
+        run: sudo yum -y install nodejs jq
       - name: Build Lambda Layer
         run: |
           mkdir nodejs
