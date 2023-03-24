@@ -8,6 +8,8 @@ on:
 jobs:
   build-and-publish:
     runs-on: ubuntu-latest
+    container:
+      image: amazonlinux:latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -23,6 +25,7 @@ jobs:
         run: |
           mkdir nodejs
           cd nodejs
+          npm init -y
           npm i @napi-rs/canvas
           cd ../
           zip -r layer.zip nodejs
