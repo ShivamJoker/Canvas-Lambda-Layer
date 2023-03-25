@@ -4,6 +4,8 @@ AWS Lambda layer for [@rapi-rs/canvas](https://github.com/Brooooooklyn/canvas) -
 
 Make sure to exclude `@rapi-rs/canvas` while bundling your Lambda.
 
+> Wondering how it went upto 830+ layer versions? [Check my blog out](https://learnaws.io/blog/lambda-layer-recursion).
+
 # Grab the closest ARN for your Lambda
 > Builds and updates every week
 
