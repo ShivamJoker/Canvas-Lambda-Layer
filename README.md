@@ -4,16 +4,18 @@ AWS Lambda layer for [@rapi-rs/canvas](https://github.com/Brooooooklyn/canvas) -
 
 Make sure to exclude `@rapi-rs/canvas` while bundling your Lambda.
 
+> Wondering how it went upto 830+ layer versions? [Check my blog out](https://learnaws.io/blog/lambda-layer-recursion).
+
 # Grab the closest ARN for your Lambda
 > Builds and updates every week
 
 | Region | Layer ARN |
 | ------ | --------- |
-|`us-east-1`|`arn:aws:lambda:us-east-1:205979422636:layer:napi-rs-canvas:831`|
-|`us-west-2`|`arn:aws:lambda:us-west-2:205979422636:layer:napi-rs-canvas:829`|
-|`eu-west-1`|`arn:aws:lambda:eu-west-1:205979422636:layer:napi-rs-canvas:828`|
-|`ap-northeast-1`|`arn:aws:lambda:ap-northeast-1:205979422636:layer:napi-rs-canvas:829`|
-|`ap-southeast-1`|`arn:aws:lambda:ap-southeast-1:205979422636:layer:napi-rs-canvas:829`|
-|`ap-southeast-2`|`arn:aws:lambda:ap-southeast-2:205979422636:layer:napi-rs-canvas:828`|
-|`eu-central-1`|`arn:aws:lambda:eu-central-1:205979422636:layer:napi-rs-canvas:828`|
-|`sa-east-1`|`arn:aws:lambda:sa-east-1:205979422636:layer:napi-rs-canvas:829`|
+|`us-east-1`|`arn:aws:lambda:us-east-1:205979422636:layer:napi-rs-canvas:832`|
+|`us-west-2`|`arn:aws:lambda:us-west-2:205979422636:layer:napi-rs-canvas:830`|
+|`eu-west-1`|`arn:aws:lambda:eu-west-1:205979422636:layer:napi-rs-canvas:829`|
+|`ap-northeast-1`|`arn:aws:lambda:ap-northeast-1:205979422636:layer:napi-rs-canvas:830`|
+|`ap-southeast-1`|`arn:aws:lambda:ap-southeast-1:205979422636:layer:napi-rs-canvas:830`|
+|`ap-southeast-2`|`arn:aws:lambda:ap-southeast-2:205979422636:layer:napi-rs-canvas:829`|
+|`eu-central-1`|`arn:aws:lambda:eu-central-1:205979422636:layer:napi-rs-canvas:829`|
+|`sa-east-1`|`arn:aws:lambda:sa-east-1:205979422636:layer:napi-rs-canvas:830`|
