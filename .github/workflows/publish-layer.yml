@@ -21,11 +21,10 @@ jobs:
 
       - name: Build Lambda Layer
         run: |
-          cd napi-rs-canvas/nodejs/
+          cd nodejs/
           npm i @napi-rs/canvas@latest
           cd ../
           zip -r layer.zip nodejs
-          mv layer.zip ../
       - name: Publish Lambda Layer
         id: publish-layer
         run: |
