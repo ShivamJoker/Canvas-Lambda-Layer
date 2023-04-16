@@ -23,8 +23,9 @@ jobs:
         run: |
           cd napi-rs-canvas/nodejs/
           npm i @napi-rs/canvas@latest
-          cd ../../
-          zip -r layer.zip napi-rs-canvas/nodejs
+          cd ../
+          zip -r layer.zip nodejs
+          mv layer.zip ../
       - name: Publish Lambda Layer
         id: publish-layer
         run: |
