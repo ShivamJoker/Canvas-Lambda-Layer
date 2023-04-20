@@ -1,8 +1,8 @@
 # Canvas-Lambda-Layer
 
-AWS Lambda layer for [@rapi-rs/canvas](https://github.com/Brooooooklyn/canvas) - High performance canvas for NodeJS
+AWS Lambda layer for [@napi-rs/canvas](https://github.com/Brooooooklyn/canvas) - High performance canvas for NodeJS
 
-Make sure to exclude `@rapi-rs/canvas` while bundling your Lambda.
+Make sure to exclude `@napi-rs/canvas` while bundling your Lambda.
 
 > Wondering how it went upto 830+ layer versions? [Check my blog out](https://learnaws.io/blog/lambda-layer-recursion).
 
