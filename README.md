@@ -11,11 +11,11 @@ Make sure to exclude `@napi-rs/canvas` while bundling your Lambda.
 
 | Region | Layer ARN |
 | ------ | --------- |
-|`us-east-1`|`arn:aws:lambda:us-east-1:205979422636:layer:napi-rs-canvas:858`|
-|`us-west-2`|`arn:aws:lambda:us-west-2:205979422636:layer:napi-rs-canvas:856`|
-|`eu-west-1`|`arn:aws:lambda:eu-west-1:205979422636:layer:napi-rs-canvas:855`|
-|`ap-northeast-1`|`arn:aws:lambda:ap-northeast-1:205979422636:layer:napi-rs-canvas:856`|
-|`ap-southeast-1`|`arn:aws:lambda:ap-southeast-1:205979422636:layer:napi-rs-canvas:856`|
-|`ap-southeast-2`|`arn:aws:lambda:ap-southeast-2:205979422636:layer:napi-rs-canvas:855`|
-|`eu-central-1`|`arn:aws:lambda:eu-central-1:205979422636:layer:napi-rs-canvas:855`|
-|`sa-east-1`|`arn:aws:lambda:sa-east-1:205979422636:layer:napi-rs-canvas:856`|
+|`us-east-1`|`arn:aws:lambda:us-east-1:205979422636:layer:napi-rs-canvas:859`|
+|`us-west-2`|`arn:aws:lambda:us-west-2:205979422636:layer:napi-rs-canvas:857`|
+|`eu-west-1`|`arn:aws:lambda:eu-west-1:205979422636:layer:napi-rs-canvas:856`|
+|`ap-northeast-1`|`arn:aws:lambda:ap-northeast-1:205979422636:layer:napi-rs-canvas:857`|
+|`ap-southeast-1`|`arn:aws:lambda:ap-southeast-1:205979422636:layer:napi-rs-canvas:857`|
+|`ap-southeast-2`|`arn:aws:lambda:ap-southeast-2:205979422636:layer:napi-rs-canvas:856`|
+|`eu-central-1`|`arn:aws:lambda:eu-central-1:205979422636:layer:napi-rs-canvas:856`|
+|`sa-east-1`|`arn:aws:lambda:sa-east-1:205979422636:layer:napi-rs-canvas:857`|
