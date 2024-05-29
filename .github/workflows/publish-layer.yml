@@ -15,9 +15,7 @@ jobs:
         run: yum -y install tar gzip git nodejs zip 
 
       - name: Checkout repository
-        uses: actions/checkout@v3
-        with:
-         token: ${{ secrets.PAT_TOKEN }}
+        uses: actions/checkout@v4
 
       - name: Build Lambda Layer
         run: |
@@ -32,18 +30,12 @@ jobs:
           export AWS_SECRET_ACCESS_KEY="${{ secrets.AWS_SECRET_ACCESS_KEY }}"
           node index.mjs
 
-      - name: Set Up Git User
-        run: |
-          git config --system --add safe.directory /__w/Canvas-Lambda-Layer/*
-
       - name: Commit and Push Changes
         run: |
-          pwd
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-          git pull
-          git add README.md
-          git commit -m "Update layer version on README"
-          git push origin HEAD
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "generated"
+          git push
+
+
