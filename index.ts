@@ -1,4 +1,4 @@
-import { Lambda } from "@aws-sdk/client-lambda";
+import { Lambda, Runtime } from "@aws-sdk/client-lambda";
 import fs from "fs/promises";
 import { resolve } from "path";
 
@@ -7,18 +7,29 @@ const LAYER_NAME = "napi-rs-canvas";
 const LAYER_DESCRIPTION = "Lambda layer for @napi-rs/canvas";
 
 // Define the compatible Node.js runtimes for the Lambda layer
-const COMPATIBLE_RUNTIMES = ["nodejs14.x", "nodejs16.x", "nodejs18.x"];
+const COMPATIBLE_RUNTIMES: Runtime[] = [
+  "nodejs16.x",
+  "nodejs18.x",
+  "nodejs20.x",
+];
 
 // Define the AWS regions to publish the Lambda layer to
 const regions = [
   "us-east-1",
+  "us-east-2",
+  "us-west-1",
   "us-west-2",
+  "ca-central-1",
+  "sa-east-1",
   "eu-west-1",
+  "eu-west-2",
+  "eu-west-3",
+  "eu-central-1",
+  "af-south-1",
   "ap-northeast-1",
+  "ap-south-1",
   "ap-southeast-1",
   "ap-southeast-2",
-  "eu-central-1",
-  "sa-east-1",
 ];
 
 async function publishLayer() {
