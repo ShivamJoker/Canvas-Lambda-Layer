@@ -46,4 +46,4 @@ jobs:
           git commit -m "Update layer version on README"
           git push origin HEAD
         env:
-          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
