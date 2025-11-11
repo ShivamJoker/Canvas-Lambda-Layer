@@ -15,7 +15,7 @@ jobs:
         run: yum -y install tar gzip git nodejs zip 
 
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Build Lambda Layer
         run: |
@@ -32,7 +32,6 @@ jobs:
 
       - name: Commit and Push Changes
         run: |
-          cd $GITHUB_WORKSPACE
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add .
