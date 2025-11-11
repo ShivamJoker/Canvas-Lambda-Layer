@@ -24194,7 +24194,8 @@ var LAYER_DESCRIPTION = "Lambda layer for @napi-rs/canvas";
 var COMPATIBLE_RUNTIMES = [
   "nodejs16.x",
   "nodejs18.x",
-  "nodejs20.x"
+  "nodejs20.x",
+  "nodejs22.x"
 ];
 var regions = [
   "us-east-1",
