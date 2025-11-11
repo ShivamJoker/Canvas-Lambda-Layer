@@ -11,6 +11,7 @@ const COMPATIBLE_RUNTIMES: Runtime[] = [
   "nodejs16.x",
   "nodejs18.x",
   "nodejs20.x",
+  "nodejs22.x",
 ];
 
 // Define the AWS regions to publish the Lambda layer to
